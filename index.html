@@ -5,7 +5,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Engasgo em bebês — O que fazer · 1º Minuto</title>
-<link rel="manifest" href='data:application/json;charset=utf-8,{"name":"1º Minuto - Engasgo em Bebês","short_name":"1º Minuto","start_url":".","display":"standalone","background_color":"#f0f9fd","theme_color":"#0a4a5e","icons":[{"src":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBhNGE1ZSIvPjx0ZXh0IHg9IjUwIiB5PSI2NSIgZm9udC1zaXplPSI0NSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4xwqo8L3RleHQ+PC9zdmc+","sizes":"512x512","type":"image/svg+xml"}]}'>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0a4a5e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="1º Minuto">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+<link rel="icon" href="icons/favicon.ico" sizes="any">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -412,37 +420,9 @@ img{max-width:100%;display:block}
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      // Pega o caminho atual do arquivo para garantir que ele fará o cache do próprio HTML
-      const currentPath = window.location.pathname;
-      
-      const swCode = `
-        const CACHE_NAME = 'engasgo-bebe-v1';
-        
-        self.addEventListener('install', event => {
-          event.waitUntil(
-            caches.open(CACHE_NAME).then(cache => {
-              // Salva este próprio arquivo HTML no cache do celular
-              return cache.add('${currentPath}');
-            })
-          );
-          self.skipWaiting();
-        });
-
-        self.addEventListener('fetch', event => {
-          event.respondWith(
-            caches.match(event.request).then(response => {
-              return response || fetch(event.request);
-            })
-          );
-        });
-      `;
-
-      const blob = new Blob([swCode], { type: 'application/javascript' });
-      const swUrl = URL.createObjectURL(blob);
-
-      navigator.serviceWorker.register(swUrl)
-        .then(() => console.log('PWA configurado: Pronto para funcionar offline!'))
-        .catch(err => console.error('Erro no PWA:', err));
+      navigator.serviceWorker.register('sw.js')
+        .then(() => console.log('PWA configurado: pronto para funcionar offline!'))
+        .catch((err) => console.error('Erro no PWA:', err));
     });
   }
 </script>

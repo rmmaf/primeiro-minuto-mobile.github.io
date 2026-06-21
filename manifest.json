@@ -1,0 +1,26 @@
+{
+  "name": "1º Minuto - Engasgo em Bebês",
+  "short_name": "1º Minuto",
+  "description": "O que fazer no primeiro minuto de um engasgo em bebês.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "lang": "pt-BR",
+  "background_color": "#f0f9fd",
+  "theme_color": "#0a4a5e",
+  "icons": [
+    {
+      "src": "icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
