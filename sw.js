@@ -1,4 +1,4 @@
-const CACHE_NAME = 'engasgo-bebe-v5';
+const CACHE_NAME = 'engasgo-bebe-v6';
 const ASSETS = [
   './',
   './index.html',
